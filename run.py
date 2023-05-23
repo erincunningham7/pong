@@ -54,6 +54,48 @@ ball.penup()
 # Ball needs to start in middle of the screen
 ball.goto(0, 0)
 
+# Function
+# I want to move paddle a up and paddle b down and vice versa
+def paddle_a_up():
+    # To move the paddle i need to know the current y coordinate
+    y = paddle_a.ycor()
+    # Add 20px to the y coordinate
+    y += 20
+    paddle_a.sety(y)
+
+def paddle_a_down():
+    # To move the paddle i need to know the current y coordinate
+    y = paddle_a.ycor()
+    # Add 20px to the y coordinate
+    y -= 20
+    paddle_a.sety(y)
+
+def paddle_b_up():
+    # To move the paddle i need to know the current y coordinate
+    y = paddle_b.ycor()
+    # Add 20px to the y coordinate
+    y += 20
+    paddle_b.sety(y)
+
+def paddle_b_down():
+    # To move the paddle i need to know the current y coordinate
+    y = paddle_b.ycor()
+    # Add 20px to the y coordinate
+    y -= 20
+    paddle_b.sety(y)
+
+# Keyboard binding
+# Tells it to listen for keyboard inputs
+wn.listen()
+# When the user presses w, call the function paddle_a_up
+wn.onkeypress(paddle_a_up, "w")
+wn.onkeypress(paddle_a_down, "s")
+# Using arrow keys for paddle b
+wn.onkeypress(paddle_b_up, "Up")
+wn.onkeypress(paddle_b_down, "Down")
+
+
+
 # Main game loop
 while True:
     # Every time the loop runs it updates the screen
