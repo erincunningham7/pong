@@ -53,6 +53,11 @@ ball.color("white")
 ball.penup()
 # Ball needs to start in middle of the screen
 ball.goto(0, 0)
+# Separate the balls movement into two parts, d means delta or change
+# Every time the ball moves it moves 2px, so it will be moving up and diagonally
+ball.dx = 0.1
+ball.dy = 0.1
+
 
 # Function
 # I want to move paddle a up and paddle b down and vice versa
@@ -95,8 +100,10 @@ wn.onkeypress(paddle_b_up, "Up")
 wn.onkeypress(paddle_b_down, "Down")
 
 
-
 # Main game loop
 while True:
     # Every time the loop runs it updates the screen
     wn.update()
+    # Move the ball
+    ball.setx(ball.xcor() + ball.dx)
+    ball.sety(ball.ycor() + ball.dy)
