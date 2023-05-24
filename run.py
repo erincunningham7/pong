@@ -107,3 +107,14 @@ while True:
     # Move the ball
     ball.setx(ball.xcor() + ball.dx)
     ball.sety(ball.ycor() + ball.dy)
+    # Border checking
+    # Compare the balls y coordinate and make it bounce
+    if ball.ycor() > 290:
+        ball.sety(290)
+        # Reverse the direction
+        ball.dy *= -1
+    # Compare the balls y coordinate and make it bounce
+    if ball.ycor() < -290:
+        ball.sety(-290)
+        # Reverse the direction
+        ball.dy *= -1
