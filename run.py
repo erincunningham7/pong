@@ -118,3 +118,11 @@ while True:
         ball.sety(-290)
         # Reverse the direction
         ball.dy *= -1
+    # If the ball goes off to the side pull it back to the center and reverse direction
+    if ball.xcor() > 390:
+        ball.goto(0, 0)
+        ball.dx *= -1
+    if ball.xcor() < -390:
+        ball.goto(0, 0)
+        ball.dx *= -1
+
