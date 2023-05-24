@@ -9,6 +9,10 @@ wn.setup(width=800, height=600)
 # Tracer stops the window from updating
 wn.tracer(0)
 
+# Score
+score_a = 0
+score_b = 0
+
 # Paddle A
 # Assigning paddle_a a turtle object
 paddle_a = turtle.Turtle()
@@ -58,6 +62,15 @@ ball.goto(0, 0)
 ball.dx = 0.1
 ball.dy = 0.1
 
+# Draw score on the screen
+# Create pen/turtle for default score
+pen = turtle.Turtle()
+pen.speed(0)
+pen.color("white")
+pen.penup()
+pen.hideturtle()
+pen.goto(0, 260)
+pen.write("Player A: 0  Player B: 0", align="center", font=("Courier", 24, "normal"))
 
 # Function
 # I want to move paddle a up and paddle b down and vice versa
@@ -122,9 +135,17 @@ while True:
     if ball.xcor() > 390:
         ball.goto(0, 0)
         ball.dx *= -1
+        score_a += 1
+        # Use the format method to update scores and clear the default score
+        pen.clear()
+        pen.write("Player A: {}  Player B: {}".format(score_a, score_b), align="center", font=("Courier", 24, "normal"))
     if ball.xcor() < -390:
         ball.goto(0, 0)
         ball.dx *= -1
+        score_b += 1
+        # Use the format method to update scores and clear the default score
+        pen.clear()
+        pen.write("Player A: {}  Player B: {}".format(score_a, score_b), align="center", font=("Courier", 24, "normal"))
     # Paddle and ball collisions
     # If the balls x co ordinate is greater than 340, so the edges are touching, and between the top and bottom of the paddle, set the ball back to the middle and reverse direction
     if ball.xcor() > 340 and ball.xcor() < 350 and (ball.ycor() < paddle_b.ycor() + 40 and ball.ycor() > paddle_b.ycor() - 50):
